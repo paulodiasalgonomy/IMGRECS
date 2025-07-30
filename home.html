@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - v0.0.4</title>
+    <style>
+        .item {
+            display: table;
+            width: 100%;
+            border: 1px solid #333;
+            margin-bottom: 5px;
+
+        }
+
+        img.apenas-desk {
+            max-width: 600px;
+            float: left;
+        }
+
+        img.apenas-mobile {
+            max-width: 600px;
+            float: right;
+        }
+
+        .item span {
+            width: 50%;
+            display: block;
+            padding: 20px;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SCRIPT ALGONOMY -->
+    <script src="https://media.richrelevance.com/rrserver/js/1.2/p13n.js"></script>
+    <script src="rr.js"></script>
+    <script>
+        configureR3();
+        // Define o tipo de página e os placements (vitrines que serão retornadas com recomendações, caso não tenha vitrines, pode deixar apenas o tipo da página)
+        window.R3_COMMON.addPlacementType('home_page.cards_carrossel_1|home_page.cards_carrossel_2|home_page.cards_carrossel_3|home_page.cards_carrossel_4|home_page.cards_carrossel_5|home_page.cards_carrossel_6|home_page.cards_carrossel_7|home_page.cards_carrossel_8|home_page.midia_cards_centro_posicao01|home_page.midia_cards_centro_posicao02|home_page.midia_cards_centro_posicao03|home_page.midia_cards_centro_posicao04|home_page.midia_cards_centro_posicao05');
+        window.R3_HOME = new r3_home();
+        rr_flush_onload();
+        r3();
+
+        RR.jsonCallback = function () {
+            var arr = RR.data.JSON.placements;
+            var htmlInsert = "<div>";
+            console.log(arr);
+
+            for (var i = 0; i < arr.length; i++) {
+                // FULLBANNER
+                if ((arr[i].name == 'home_page.fullbanner_fast_01') || (arr[i].name == 'home_page.fullbanner_fast_02') || (arr[i].name == 'home_page.fullbanner_fast_03') || (arr[i].name == 'home_page.fullbanner_fast_04')) {
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '" class="item"><span>FULLBANNER</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '"><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a><div class="clear"></div></div>';
+                }
+                // MIDIA CARDS TAKEOVER
+                if ((arr[i].name == 'home_page.midia_cards_takeover01') || (arr[i].name == 'home_page.midia_cards_takeover02') || (arr[i].name == 'home_page.midia_cards_takeover03') || (arr[i].name == 'home_page.midia_cards_takeover04') || (arr[i].name == 'home_page.midia_cards_takeover04') || (arr[i].name == 'home_page.midia_cards_takeover05')) {
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>TAKEOVER</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '"><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
+                }
+                // home_page.cards_carrossel
+                if ((arr[i].name == 'home_page.cards_carrossel_1') || (arr[i].name == 'home_page.cards_carrossel_2') || (arr[i].name == 'home_page.cards_carrossel_3') || (arr[i].name == 'home_page.cards_carrossel_4') || (arr[i].name == 'home_page.cards_carrossel_5')) {
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>cards_carrossel</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '"><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
+                }
+                // home_page.midia_cards_centro_posicao
+                if ((arr[i].name == 'home_page.midia_cards_centro_posicao01') || (arr[i].name == 'home_page.midia_cards_centro_posicao02') || (arr[i].name == 'home_page.midia_cards_centro_posicao03') || (arr[i].name == 'home_page.midia_cards_centro_posicao04') || (arr[i].name == 'home_page.midia_cards_centro_posicao05')) {
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>midia_cards_centro_posicao</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '"><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
+                }
+                // FULL BANNER RODAPE
+                if ((arr[i].name == 'home_page.full_banner_rodape')) {
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>FULL BANNER RODAPE</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '" /><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
+                }
+            }
+            htmlInsert += "</div><pre>" + JSON.stringify(RR, null, "\t") + "</pre>";
+            document.getElementById("jsonRR").innerHTML = htmlInsert;
+        };
+    </script>
+    <div id="jsonRR">
+
+
+
+    </div>
+
+</body>
+
+</html>
