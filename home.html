@@ -74,7 +74,7 @@
                 }
                 // FULL BANNER RODAPE
                 if ((arr[i].name == 'home_page.full_banner_rodape')) {
-                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>FULL BANNER RODAPE</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '" /><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
+                    htmlInsert += '<div data-placement-type="' + arr[i].name + '"  class="item"><span>FULL BANNER RODAPE</span><a href="' + arr[i].content.clickURL + '" title="Ir para ' + arr[i].content.imgAlt + '"><img src="' + arr[i].content.imgURL + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-desk" /><img src="' + arr[i].content.imgURLMobile + '"  alt="' + arr[i].content.imgAlt + '" class="apenas-mobile " /></a></div>';
                 }
             }
             htmlInsert += "</div><pre>" + JSON.stringify(RR, null, "\t") + "</pre>";
